@@ -1,11 +1,17 @@
 package com.varsha.dp;
 
+//Time complexity = O(n*W)
+//Space Complexity = O(n*w)
+//Using DP Tabulation approach
+
+//Formula - K[i][w] = Max{K[i-1][w], K[i-1][w-W[i-1]+P[i-1]}
+
 public class O1Knapsack {
 
 	public static void main(String[] args) {
 		
-		int P[] = {0, 1, 2, 5, 6};
-		int W[] = {0, 2, 3, 4, 5};
+		int P[] = {1, 2, 5, 6};
+		int W[] = {2, 3, 4, 5};
 
 		int M = 8;
 		int n = 4;
@@ -18,8 +24,8 @@ public class O1Knapsack {
 				
 				if (i == 0 || w == 0) {
 					K[i][w] = 0;
-				} else if(W[i] <= w) { //if weight is less then compute the value
-					K[i][w] = Math.max(K[i-1][w], K[i-1][w-W[i]] + P[i]);
+				} else if(W[i-1] <= w) { //if weight is less then compute the value
+					K[i][w] = Math.max(K[i-1][w], K[i-1][w-W[i-1]] + P[i-1]);
 				} else { // if weight is small, copy previous values
 					K[i][w] = K[i-1][w];
 				}
@@ -29,18 +35,19 @@ public class O1Knapsack {
 		}
 		System.out.println("Optimal - Max profit: "+ K[n][M]);
 		
-		int i = n, j = K[n][M];
-		while (i > 0 && j >= 0) {
-			if (K[i][j] == K[i-1][j]) {
-				System.out.println(i + "is not included in Knapsack.");
+		int i = n, j = K[n][M]; int w = M;
+		while (i > 0 && j >=0) {
+			if (j == K[i-1][w]) {
+				System.out.println(i + " is not included in Knapsack.");
 				i--;
 			} else {
 				System.out.println(i + " is included in Knapsack.");
-				j = j - W[i];
+				j = j - P[i-1]; //subtract profit
 				i--;
-				System.out.println("i= "+ i+ "j ="+ j+ ", "+K[i][j]);
+				w = M - W[i-1]; //subtract weight
 			}
 		}
+		System.out.println();
 		//simple bitwise - << - left shift --> val = val*2^n ; n is RHS, val=LHS
 		System.out.println((5<<1) +", " + (5<<2) + ", "+( 1<<1)+", " +(1<<5));
 		String s1 = "abcdefghij";

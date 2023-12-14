@@ -1,5 +1,9 @@
 package com.varsha.dp;
 
+//LCS - Longest Common  Subsequence
+//Time = O(m*n) using Tabulation/Memoization 
+//Without using DP, Time = O(2^n)
+
 public class LCSMemoization {
 
 	public int lcs(String s1, String s2, int m, int n, int[][] dp) {

@@ -1,10 +1,10 @@
-package com.varsha.dfs;
+package com.varsha.dp.dfs;
 
 //A Java program to find articulation 
 //points in an undirected graph
 import java.util.*;
 
-class Test {
+class AP {
 
 	static int time;
 

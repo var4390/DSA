@@ -1,4 +1,4 @@
-package com.varsha.dfs;
+package com.varsha.dp.dfs;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -53,7 +53,7 @@ public class APGraph {
 		while(it.hasNext()) {
 			int v = it.next();
 			
-			if(!visited[v]) {
+			if(!visited[v]) { //if not visited take low[v]
 				children++;
 				APUtil(visited, low, dis, u, isAP, v);
 				
@@ -62,7 +62,7 @@ public class APGraph {
 				if(parent != -1 && low[v] >= dis[u]) {
 					isAP[u] = true;
 				}
-			} else if (v != parent) {
+			} else if (v != parent) { //if visited, take dis[v]
 				low[u] = Math.min(low[u], dis[v]);
 			}
 		}

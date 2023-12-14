@@ -19,7 +19,7 @@ public class TSP {
 
 	public static int tsp(int mask, int pos) {
 		
-		int ans = 99999;
+		int ans = Integer.MAX_VALUE;
 		
 		int[][] d = {{0, 10, 15, 20},{5, 0, 9, 10},{6, 13, 0, 12},{8, 8, 9, 0}};
 

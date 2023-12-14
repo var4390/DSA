@@ -1,5 +1,9 @@
 package com.varsha.backtracking;
 
+//prints only 1 solution 
+//Time = O(n!)
+//Space = O(n^2)
+
 public class NQueens {
 
 	private int n; //4*4 chessboard

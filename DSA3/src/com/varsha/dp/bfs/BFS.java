@@ -1,4 +1,4 @@
-package com.varsha.bfs;
+package com.varsha.dp.bfs;
 
 import java.util.LinkedList;
 import java.util.Queue;

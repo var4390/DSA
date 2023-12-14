@@ -2,6 +2,12 @@ package com.varsha.backtracking;
 
 import java.util.Stack;
 
+// 2 choices - either include current element and check recursively for next remaining items or exclude curr element & recursively check for remianing elements
+// Time complexity = O(2^n), Space = O(n)
+//base cases: 
+//1.sum==0 --> print solution coz everytime we are subtracting when including element
+//2. when complete array is traversed, return -> curr==set.length 
+
 public class SubsetSum {
 
 	public static void findSubset(int[] set, int sum, int curr, Stack<Integer> subset) {
@@ -18,6 +24,7 @@ public class SubsetSum {
 			return;
 		}
 		
+		// exclude current element
 		findSubset(set, sum, curr+1, subset);
 		
 		if(set[curr] <= sum) {
@@ -25,7 +32,7 @@ public class SubsetSum {
 			int push = subset.push(set[curr]);
 			System.out.println("Pushed: "+ push);
 			//subset.add(set[curr]);
-			
+			//include curr element
 			findSubset(set, sum-set[curr], curr+1, subset);
 			
 			int pop = subset.pop();

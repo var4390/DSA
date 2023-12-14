@@ -2,6 +2,8 @@ package com.varsha.backtracking;
 
 //Java program for the above approach
 
+//Time Complexity = O(n!), Space = O(n)
+
 import java.util.ArrayList;
 class AllHamCyclesproblem {
 
@@ -16,9 +18,9 @@ class AllHamCyclesproblem {
 			return false;
 
 		// If the vertex has already been included in the path
-		for (int i = 0; i < pos; i++)
+		/*for (int i = 0; i < pos; i++)
 			if (path.get(i) == v)
-				return false;
+				return false;*/
 
 		// Both the above conditions are not true, return true
 		return true;
@@ -81,7 +83,7 @@ class AllHamCyclesproblem {
 		}
 
 		// Try different vertices as the next vertex
-		for (int v = 0;v < graph.length; v++) {
+		for (int v = 1;v < graph.length; v++) {
 
 			// Check if this vertex can be added to Cycle
 			if (isSafe(v, graph, path, pos) && !visited[v]) {
